@@ -1,0 +1,61 @@
+﻿@page "/"
+@inherits Web.Components.Pages.RecipesBase
+
+<PageTitle>Rezepte</PageTitle>
+
+<h1>Alle Rezepte</h1>
+
+@if (recipes == null)
+{
+    <p><em>Laden...</em></p>
+}
+else if (!recipes.Any())
+{
+    <p>Keine Rezepte gefunden.</p>
+}
+else
+{
+    <div class="recipe-grid">
+        @foreach (var recipe in recipes)
+        {
+            <a href="/recipe?id=@recipe.Id" class="recipe-card">
+                <h3>@recipe.Name</h3>
+                <p>@recipe.Description</p>
+            </a>
+        }
+    </div>
+}
+
+<style>
+    .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .recipe-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .recipe-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .recipe-card h3 {
+        margin: 0 0 0.5rem 0;
+        color: #333;
+    }
+
+    .recipe-card p {
+        margin: 0;
+        color: #666;
+    }
+</style>

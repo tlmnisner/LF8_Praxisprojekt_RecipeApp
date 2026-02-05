@@ -1,0 +1,36 @@
+﻿@page "/recipe"
+@inherits Web.Components.Pages.RecipeDetailBase
+
+<PageTitle>@(recipe?.Name ?? "Rezept")</PageTitle>
+
+@if (recipe == null)
+{
+    <p><em>Laden...</em></p>
+}
+else
+{
+    <div class="recipe-detail">
+        <h1>@recipe.Name</h1>
+        <p class="description">@recipe.Description</p>
+        
+        <h3>Zutaten</h3>
+        <ul>
+            @foreach (var ingredient in recipe.Ingredients)
+            {
+                <li>@ingredient.Quantity @ingredient.Measurand @ingredient.Name</li>
+            }
+        </ul>
+
+        <h3>Zubereitung</h3>
+        <ol>
+            @foreach (var instruction in recipe.Instructions)
+            {
+                <li>@instruction.Description</li>
+            }
+        </ol>
+
+        <p><strong>Vorbereitungszeit:</strong> @recipe.PrepTimeMinutes Min. | <strong>Kochzeit:</strong> @recipe.CookTimeMinutes Min.</p>
+
+        <a href="/">Zurück zur Übersicht</a>
+    </div>
+}

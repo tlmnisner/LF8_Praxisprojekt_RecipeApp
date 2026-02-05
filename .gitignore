@@ -1,2 +1,22 @@
+# Build
 **/bin/
 **/obj/
+
+# Rider / IDE
+.idea/
+*.DotSettings.user
+src/RecipeApp.sln.DotSettings.user
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# NuGet / publish
+*.nupkg
+packages/
+publish/
+
+# Logs / temp
+*.log
+*.tmp

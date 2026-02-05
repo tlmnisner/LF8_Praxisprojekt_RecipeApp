@@ -9,4 +9,10 @@ var apiService = builder.AddProject<Projects.RecipeApp_ApiService>("apiservice")
     .WithReference(sql)
     .WaitFor(sql);
 
+var web  = builder.AddProject<Projects.RecipeApp_Web>("web")
+    .WithHttpHealthCheck("/health")
+    .WaitFor(apiService)
+    .WithReference(apiService)
+    ;
+
 builder.Build().Run();

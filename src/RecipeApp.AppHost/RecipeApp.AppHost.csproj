@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\RecipeApp.ApiService\RecipeApp.ApiService.csproj"/>
+        <ProjectReference Include="..\RecipeApp.Web\RecipeApp.Web.csproj" />
     </ItemGroup>
 
     <ItemGroup>
